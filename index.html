@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nur_shop</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="nur_shop.jpeg" type="image/x-icon">
+    <link rel="shortcut icon" href="nur_shop.jpeg" type="image/x-icon">
+    <link rel="shortcut icon" href="nur_shop.jpeg" type="image/x-icon">
+</head>
+<body>
+    <!-- Header Section Start -->
+    <header id="main-header">
+        <nav>
+            <!-- Logo -->
+            <a href="#" class="logo nav-link" data-page="home-page"><img src="nur_shop.jpeg" alt="লোগো"></a>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="mobile-menu-toggle" onclick="toggleMobileNav()">☰</div>
+
+            <!-- Main Navigation Links -->
+            <ul id="nav-links">
+                <li><a href="#" class="nav-link active" data-page="home-page">হোম</a></li>
+                <li><a href="#" class="nav-link" data-page="shop-page">শপ</a></li>
+                <li><a href="#" class="nav-link" data-page="about-page">আমাদের সম্পর্কে</a></li>
+                <li><a href="#" class="nav-link" data-page="return-policy-page">রিটার্ন পলিসি</a></li>
+                <li><a href="#" class="nav-link" data-page="contact-page">যোগাযোগ</a></li>
+            </ul>
+
+            <!-- Navigation Extra Items (Search, Copy Info, Cart) -->
+            <div class="nav-extra">
+                <!-- Delivery Info Copy Icon -->
+                <a href="#" class="nav-link delivery-info-copy-nav-icon" data-page="delivery-info-copy-page" title="ডেলিভারি তথ্য কপি করুন">📝</a>
+
+                <!-- Product Code Search Container (এখন এটি কম কার্যকরী হবে) -->
+                <div class="search-container">
+                     <span class="search-icon">🔍</span>
+                    <input type="text" id="product-code-search" placeholder="প্রোডাক্ট কোড...">
+                </div>
+                <button class="search-btn" onclick="searchByProductCodeHTML()">খুঁজুন</button>
+
+                <!-- Cart Icon and Count -->
+                <a href="#" class="cart-icon-nav nav-link" data-page="cart-page">
+                    🛒 <span id="cart-count">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Main Content Area Start -->
+    <main>
+        <!-- Homepage Section Start -->
+        <section id="home-page" class="page-section active">
+            <!-- Hero Banner -->
+            <div class="hero-banner animate-on-scroll">
+                <h1>আমাদের নতুন কালেকশন দেখুন!</h1>
+                <p>ছেলেদের, মেয়েদের ও বাচ্চাদের জন্য আকর্ষণীয় পোশাক ও জুতা।</p>
+                <a href="#" class="btn btn-accent nav-link" data-page="shop-page">এখনই কিনুন</a>
+            </div>
+
+            <!-- Categories Section -->
+            <section class="categories animate-on-scroll">
+                <h2>ক্যাটাগরি</h2>
+                <div class="category-grid">
+                    <!-- ক্যাটাগরি আইটেম onclick ফাংশন পরিবর্তন করা লাগতে পারে যদি ফিল্টারিং HTML ভিত্তিক হয় -->
+                    <div class="category-item" onclick="navigateToShopWithCategory('mens')">ছেলেদের পোশাক</div>
+                    <div class="category-item" onclick="navigateToShopWithCategory('womens')">মেয়েদের পোশাক</div>
+                    <div class="category-item" onclick="navigateToShopWithCategory('kids')">বাচ্চাদের পোশাক</div>
+                    <div class="category-item" onclick="navigateToShopWithCategory('shoes')">জুতা</div>
+                    <div class="category-item" onclick="navigateToShopWithCategory('home')">ঘর সাজানোর জিনিস</div>
+                    <div class="category-item" onclick="navigateToShopWithCategory('electronics')">ইলেকট্রনিকস</div>
+                </div>
+            </section>
+
+            <!-- Featured Products Section -->
+            <section class="featured-products animate-on-scroll">
+                <h2>জনপ্রিয় পণ্য</h2>
+                <div class="product-grid" id="home-product-grid">
+                    <!-- প্রোডাক্ট ১ (HTML এ সরাসরি) -->
+                    <div class="product-card" data-product-id="P001" data-category="mens" data-name="ছেলেদের প্রিমিয়াম কটন টি-শার্ট" data-price="550" data-image="product/1.jpg" data-code="BTS01" data-description="উচ্চমানের কটন দিয়ে তৈরি আরামদায়ক টি-শার্ট। গরমে খুবই আরামদায়ক।">
+                        <div class="product-image-container">
+                            <img src="product/1.jpg" alt="ছেলেদের প্রিমিয়াম কটন টি-শার্ট">
+                            <!-- স্ক্র্যাচ কার্ড অংশ বাদ -->
+                        </div>
+                        <div class="product-info">
+                            <h3>ছেলেদের প্রিমিয়াম কটন টি-শার্ট</h3>
+                            <p class="product-code-display"><strong>কোড:</strong> BTS01</p>
+                            <p class="call-for-price">মূল্য জানতে ও অর্ডারের জন্য <a href="tel:01700000000">017********</a> নম্বরে কল করুন।</p>
+                            <div class="btn-actions">
+                                <button class="btn btn-secondary details-btn btn-sm" onclick="viewProductDetailsFromHTML(this.closest('.product-card'))">বিস্তারিত</button>
+                                <button class="btn btn-info copy-code-btn-card btn-sm" onclick="copyProductCodeFromCard(event, 'BTS01')">কোড কপি</button>
+                                <button class="btn btn-accent add-to-cart-btn btn-sm" onclick="addToCartFromHTML(this.closest('.product-card'))">কার্টে নিন</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- প্রোডাক্ট ২ (HTML এ সরাসরি) -->
+                    <div class="product-card" data-product-id="P002" data-category="womens" data-name="মেয়েদের স্টাইলিশ কুর্তি" data-price="1250" data-image="https://via.placeholder.com/300x300.png?text=Girls+Kurti" data-code="GKU02" data-description="আধুনিক ডিজাইনের আকর্ষণীয় কুর্তি। যেকোনো অনুষ্ঠানে মানানসই।">
+                        <div class="product-image-container">
+                            <img src="product/2.jpg" alt="মেয়েদের স্টাইলিশ কুর্তি">
+                        </div>
+                        <div class="product-info">
+                            <h3>মেয়েদের স্টাইলিশ থ্রিপিচ</h3>
+                            <p class="product-code-display"><strong>কোড:</strong> GKU02</p>
+                            <p class="call-for-price">মূল্য জানতে ও অর্ডারের জন্য <a href="tel:01700000000">017********</a> নম্বরে কল করুন।</p>
+                            <div class="btn-actions">
+                                <button class="btn btn-secondary details-btn btn-sm" onclick="viewProductDetailsFromHTML(this.closest('.product-card'))">বিস্তারিত</button>
+                                <button class="btn btn-info copy-code-btn-card btn-sm" onclick="copyProductCodeFromCard(event, 'GKU02')">কোড কপি</button>
+                                <button class="btn btn-accent add-to-cart-btn btn-sm" onclick="addToCartFromHTML(this.closest('.product-card'))">কার্টে নিন</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                     <!-- আরও প্রোডাক্ট এভাবে যোগ করতে পারেন -->
+
+
+                    
+                    
+
+   <div class="product-card" data-product-id="P002" data-category="womens" data-name="মেয়েদের স্টাইলিশ কুর্তি" data-price="1250" data-image="https://via.placeholder.com/300x300.png?text=Girls+Kurti" data-code="GKU02" data-description="আধুনিক ডিজাইনের আকর্ষণীয় কুর্তি। যেকোনো অনুষ্ঠানে মানানসই।">
+                        <div class="product-image-container">
+                            <img src="product/2.jpg" alt="মেয়েদের স্টাইলিশ কুর্তি">
+                        </div>
+                        <div class="product-info">
+                            <h3>মেয়েদের স্টাইলিশ থ্রিপিচ</h3>
+                            <p class="product-code-display"><strong>কোড:</strong> GKU02</p>
+                            <p class="call-for-price">মূল্য জানতে ও অর্ডারের জন্য <a href="tel:01700000000">017********</a> নম্বরে কল করুন।</p>
+                            <div class="btn-actions">
+                                <button class="btn btn-secondary details-btn btn-sm" onclick="viewProductDetailsFromHTML(this.closest('.product-card'))">বিস্তারিত</button>
+                                <button class="btn btn-info copy-code-btn-card btn-sm" onclick="copyProductCodeFromCard(event, 'GKU02')">কোড কপি</button>
+                                <button class="btn btn-accent add-to-cart-btn btn-sm" onclick="addToCartFromHTML(this.closest('.product-card'))">কার্টে নিন</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+   <div class="product-card" data-product-id="P002" data-category="womens" data-name="মেয়েদের স্টাইলিশ কুর্তি" data-price="1250" data-image="https://via.placeholder.com/300x300.png?text=Girls+Kurti" data-code="GKU02" data-description="আধুনিক ডিজাইনের আকর্ষণীয় কুর্তি। যেকোনো অনুষ্ঠানে মানানসই।">
+                        <div class="product-image-container">
+                            <img src="product/2.jpg" alt="মেয়েদের স্টাইলিশ কুর্তি">
+                        </div>
+                        <div class="product-info">
+                            <h3>মেয়েদের স্টাইলিশ থ্রিপিচ</h3>
+                            <p class="product-code-display"><strong>কোড:</strong> GKU02</p>
+                            <p class="call-for-price">মূল্য জানতে ও অর্ডারের জন্য <a href="tel:01700000000">017********</a> নম্বরে কল করুন।</p>
+                            <div class="btn-actions">
+                                <button class="btn btn-secondary details-btn btn-sm" onclick="viewProductDetailsFromHTML(this.closest('.product-card'))">বিস্তারিত</button>
+                                <button class="btn btn-info copy-code-btn-card btn-sm" onclick="copyProductCodeFromCard(event, 'GKU02')">কোড কপি</button>
+                                <button class="btn btn-accent add-to-cart-btn btn-sm" onclick="addToCartFromHTML(this.closest('.product-card'))">কার্টে নিন</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     <!-- atar upora -->
+
+
+
+
+
+
+
+                </div>
+            </section>
+        </section>
+        <!-- Homepage Section End -->
+
+        <!-- Shop Page Section Start -->
+        <section id="shop-page" class="page-section">
+            <h2>সকল পণ্য</h2>
+            <!-- Filters for Shop Page (এখন এটি কম কার্যকরী হবে) -->
+            <div class="filters">
+                <label for="category-filter">ক্যাটাগরি:</label>
+                <select id="category-filter" onchange="filterProductsByCategoryHTML()">
+                    <option value="all">সকল ক্যাটাগরি</option>
+                    <option value="mens">ছেলেদের</option>
+                    <option value="womens">মেয়েদের</option>
+                    <option value="kids">বাচ্চাদের</option>
+                    <option value="shoes">জুতা</option>
+                    <option value="home">ঘর সাজানোর জিনিস</option>
+                    <option value="electronics">ইলেকট্রনিকস</option>
+                </select>
+            </div>
+            <!-- Product Grid for Shop Page -->
+            <div class="product-grid" id="shop-product-grid">
+                <!-- প্রোডাক্ট ১ (HTML এ সরাসরি) - কপি করা হয়েছে হোম পেজ থেকে -->
+                 <div class="product-card" data-product-id="P001" data-category="mens" data-name="ছেলেদের প্রিমিয়াম কটন টি-শার্ট" data-price="550" data-image="product/1.jpg" data-code="BTS01" data-description="উচ্চমানের কটন দিয়ে তৈরি আরামদায়ক টি-শার্ট। গরমে খুবই আরামদায়ক।">
+                    <div class="product-image-container">
+                        <img src="product/1.jpg" alt="ছেলেদের প্রিমিয়াম কটন টি-শার্ট">
+                    </div>
+                    <div class="product-info">
+                        <h3>ছেলেদের প্রিমিয়াম কটন টি-শার্ট</h3>
+                        <p class="product-code-display"><strong>কোড:</strong> BTS01</p>
+                        <p class="call-for-price">মূল্য জানতে ও অর্ডারের জন্য <a href="tel:01700000000">017********</a> নম্বরে কল করুন।</p>
+                        <div class="btn-actions">
+                            <button class="btn btn-secondary details-btn btn-sm" onclick="viewProductDetailsFromHTML(this.closest('.product-card'))">বিস্তারিত</button>
+                            <button class="btn btn-info copy-code-btn-card btn-sm" onclick="copyProductCodeFromCard(event, 'BTS01')">কোড কপি</button>
+                            <button class="btn btn-accent add-to-cart-btn btn-sm" onclick="addToCartFromHTML(this.closest('.product-card'))">কার্টে নিন</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- প্রোডাক্ট ২ (HTML এ সরাসরি) - কপি করা হয়েছে হোম পেজ থেকে -->
+                <div class="product-card" data-product-id="P002" data-category="womens" data-name="মেয়েদের স্টাইলিশ কুর্তি" data-price="1250" data-image="https://via.placeholder.com/300x300.png?text=Girls+Kurti" data-code="GKU02" data-description="আধুনিক ডিজাইনের আকর্ষণীয় কুর্তি। যেকোনো অনুষ্ঠানে মানানসই।">
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300.png?text=Girls+Kurti" alt="মেয়েদের স্টাইলিশ কুর্তি">
+                    </div>
+                    <div class="product-info">
+                        <h3>মেয়েদের স্টাইলিশ কুর্তি</h3>
+                        <p class="product-code-display"><strong>কোড:</strong> GKU02</p>
+                        <p class="call-for-price">মূল্য জানতে ও অর্ডারের জন্য <a href="tel:01700000000">017********</a> নম্বরে কল করুন।</p>
+                        <div class="btn-actions">
+                            <button class="btn btn-secondary details-btn btn-sm" onclick="viewProductDetailsFromHTML(this.closest('.product-card'))">বিস্তারিত</button>
+                            <button class="btn btn-info copy-code-btn-card btn-sm" onclick="copyProductCodeFromCard(event, 'GKU02')">কোড কপি</button>
+                            <button class="btn btn-accent add-to-cart-btn btn-sm" onclick="addToCartFromHTML(this.closest('.product-card'))">কার্টে নিন</button>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- প্রোডাক্ট ৩ (নতুন) -->
+                <div class="product-card" data-product-id="P003" data-category="kids" data-name="বাচ্চাদের আরামদায়ক ড্রেস" data-price="700" data-image="https://via.placeholder.com/300x300.png?text=Kids+Dress" data-code="KDR03" data-description="নরম কাপড়ে তৈরি, বাচ্চাদের জন্য খুবই আরামদায়ক।">
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300.png?text=Kids+Dress" alt="বাচ্চাদের আরামদায়ক ড্রেস">
+                    </div>
+                    <div class="product-info">
+                        <h3>বাচ্চাদের আরামদায়ক ড্রেস</h3>
+                        <p class="product-code-display"><strong>কোড:</strong> KDR03</p>
+                        <p class="call-for-price">মূল্য জানতে ও অর্ডারের জন্য <a href="tel:01700000000">017********</a> নম্বরে কল করুন।</p>
+                        <div class="btn-actions">
+                            <button class="btn btn-secondary details-btn btn-sm" onclick="viewProductDetailsFromHTML(this.closest('.product-card'))">বিস্তারিত</button>
+                            <button class="btn btn-info copy-code-btn-card btn-sm" onclick="copyProductCodeFromCard(event, 'KDR03')">কোড কপি</button>
+                            <button class="btn btn-accent add-to-cart-btn btn-sm" onclick="addToCartFromHTML(this.closest('.product-card'))">কার্টে নিন</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- প্রোডাক্ট ৪ (নতুন) -->
+                 <div class="product-card" data-product-id="P009" data-category="electronics" data-name="পাওয়ার ব্যাংক ২০০০০ mAh" data-price="0" data-image="https://via.placeholder.com/300x300.png?text=Power+Bank" data-code="ELPB09" data-description="শক্তিশালী ২০০০০ mAh পাওয়ার ব্যাংক, দ্রুত চার্জিং সমর্থন করে। ভ্রমণের জন্য আদর্শ।">
+                    <div class="product-image-container">
+                        <img src="https://via.placeholder.com/300x300.png?text=Power+Bank" alt="পাওয়ার ব্যাংক ২০০০০ mAh">
+                    </div>
+                    <div class="product-info">
+                        <h3>পাওয়ার ব্যাংক ২০০০০ mAh</h3>
+                        <p class="product-code-display"><strong>কোড:</strong> ELPB09</p>
+                        <p class="call-for-price">মূল্য জানতে ও অর্ডারের জন্য <a href="tel:01700000000">017********</a> নম্বরে কল করুন।</p>
+                        <div class="btn-actions">
+                            <button class="btn btn-secondary details-btn btn-sm" onclick="viewProductDetailsFromHTML(this.closest('.product-card'))">বিস্তারিত</button>
+                            <button class="btn btn-info copy-code-btn-card btn-sm" onclick="copyProductCodeFromCard(event, 'ELPB09')">কোড কপি</button>
+                            <button class="btn btn-accent add-to-cart-btn btn-sm" onclick="addToCartFromHTML(this.closest('.product-card'))">কার্টে নিন</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- আরও প্রোডাক্ট যোগ করুন -->
+            </div>
+        </section>
+        <!-- Shop Page Section End -->
+
+        <!-- Product Details Page Section Start -->
+        <section id="product-details-page" class="page-section">
+            <div class="product-details-layout">
+                <!-- Product Image - স্ক্র্যাচ কার্ড বাদ -->
+                <div class="product-details-image">
+                    <img id="details-img" src="product/1.jpg" alt="পণ্যের ছবি">
+                    <!-- <div class="scratch-overlay large-scratch"> Removed scratch part -->
+                </div>
+                <!-- Product Information -->
+                <div class="product-details-info">
+                    <h2 id="details-name">পণ্যের নাম লোড হচ্ছে...</h2>
+                    <div class="product-code-details-page">
+                        <p style="display: inline-block; margin-right: 10px;"><strong>প্রোডাক্ট কোড:</strong> <span id="details-product-code">লোড হচ্ছে...</span></p>
+                        <button class="btn btn-secondary btn-sm" id="copy-product-code-btn-details" onclick="copyProductCodeFromDetails()">কোড কপি করুন</button>
+                    </div>
+                    <p class="call-for-price">বিস্তারিত জানতে বা অর্ডারের জন্য <a href="tel:01700000000">017********</a> নম্বরে যোগাযোগ করুন।</p>
+                    <p id="details-description">পণ্যের বিবরণ লোড হচ্ছে...</p>
+                    <!-- Quantity Selector -->
+                    <div class="quantity-selector">
+                        <label for="quantity">পরিমাণ:</label>
+                        <input type="number" id="quantity" value="1" min="1">
+                    </div>
+                    <button id="details-add-to-cart-btn" class="btn btn-accent">কার্টে যোগ করুন</button>
+                </div>
+            </div>
+        </section>
+        <!-- Product Details Page Section End -->
+
+        <!-- Cart Page Section Start -->
+        <section id="cart-page" class="page-section">
+            <h2>আপনার শপিং কার্ট</h2>
+            <div id="cart-items-container">
+                <p class="empty-cart-message">আপনার কার্ট এখন খালি। <a href="#" class="nav-link" data-page="shop-page">কেনাকাটা শুরু করুন!</a></p>
+            </div>
+            <div class="cart-summary">
+                <h3 id="cart-summary-title">আপনার নির্বাচিত পণ্যসমূহ</h3>
+            </div>
+        </section>
+        <!-- Cart Page Section End -->
+
+        <!-- Delivery Info Copy Page Section Start -->
+        <section id="delivery-info-copy-page" class="page-section">
+            <h2>ডেলিভারি তথ্য কপি করুন</h2>
+            <form id="delivery-info-copy-form">
+                <h3>আপনার তথ্য</h3>
+                 <div class="form-grid">
+                    <div class="form-group">
+                        <label for="copy-name">নাম <span class="required">*</span></label>
+                        <input type="text" id="copy-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="copy-phone1">ফোন নম্বর ১ <span class="required">*</span></label>
+                        <input type="tel" id="copy-phone1" name="phone1" pattern="01[3-9][0-9]{8}" placeholder="01XXXXXXXXX" required>
+                    </div>
+                </div>
+                <div class="form-grid">
+                     <div class="form-group">
+                        <label for="copy-phone2">ফোন নম্বর ২ (ঐচ্ছিক)</label>
+                        <input type="tel" id="copy-phone2" name="phone2" pattern="01[3-9][0-9]{8}" placeholder="01XXXXXXXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="copy-division">বিভাগ <span class="required">*</span></label>
+                        <select id="copy-division" name="division" required>
+                            <option value="">-- বিভাগ নির্বাচন করুন --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="copy-district">জেলা <span class="required">*</span></label>
+                        <select id="copy-district" name="district" required disabled>
+                            <option value="">-- জেলা নির্বাচন করুন --</option>
+                        </select>
+                    </div>
+                     <div class="form-group">
+                        <label for="copy-thana">থানা/উপজেলা <span class="required">*</span></label>
+                        <select id="copy-thana" name="thana" required disabled>
+                            <option value="">-- থানা/উপজেলা নির্বাচন করুন --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="copy-delivery_address">ডেলিভারির ঠিকানা / পিকআপ পয়েন্ট <span class="required">*</span></label>
+                    <textarea id="copy-delivery_address" name="delivery_address" rows="3" placeholder="সম্পূর্ণ ঠিকানা লিখুন অথবা যেখান থেকে পণ্য সংগ্রহ করতে চান তার বিবরণ দিন" required></textarea>
+                    <small>এই ঠিকানায় পণ্য পাঠানো হবে বা এই ঠিকানা থেকে পণ্য সংগ্রহ করতে হবে।</small>
+                </div>
+                <div class="order-summary-checkout" id="copy-page-order-summary" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee;">
+                    <h4>আপনার নির্বাচিত পণ্যসমূহ:</h4>
+                    <div id="copy-page-cart-items">
+                        <p>আপনার কার্ট খালি।</p>
+                    </div>
+                </div>
+                <p class="price-contact-note" style="margin-top: 20px;">
+                    এই তথ্য কপি করে আপনার অর্ডার প্লেস করার জন্য <strong>017********</strong> এই নম্বরে IMO তে পাঠান।
+                </p>
+                <button type="button" class="btn btn-accent" id="copy-delivery-info-btn" style="width:100%; margin-top:10px;">তথ্য ও পণ্যের তালিকা কপি করুন</button>
+            </form>
+        </section>
+        <!-- Delivery Info Copy Page Section End -->
+
+        <!-- About Us Page Section Start -->
+        <section id="about-page" class="page-section content-page">
+            <h2>আমাদের সম্পর্কে</h2>
+            <p>আমার শপ-এ আপনাকে স্বাগতম! আমরা একটি অনলাইন ভিত্তিক বাণিজ্যিক প্রতিষ্ঠান, যেখানে আপনি ছেলে, মেয়ে ও বাচ্চাদের জন্য সব ধরনের পোশাক, জুতা এবং ঘর সাজানোর আকর্ষণীয় জিনিসপত্র খুঁজে পাবেন।</p>
+            <p>আমাদের লক্ষ্য হলো ক্রেতাদের কাছে গুণগত মানসম্পন্ন পণ্য পৌঁছে দেওয়া এবং সহজ ও ঝামেলাহীন কেনাকাটার অভিজ্ঞতা নিশ্চিত করা। আমরা বিশ্বাস করি, প্রতিটি ক্রেতাই আমাদের পরিবারের সদস্য এবং তাদের সন্তুষ্টিই আমাদের প্রধান অনুপ্রেরণা।</p>
+            <p>আমরা সরাসরি প্রস্তুতকারক এবং নির্ভরযোগ্য সরবরাহকারীদের কাছ থেকে পণ্য সংগ্রহ করি। আমাদের দক্ষ ডেলিভারি টিম আপনার অর্ডারকৃত পণ্য দ্রুততম সময়ে আপনার দোরগোড়ায় পৌঁছে দিতে সর্বদা প্রস্তুত।</p>
+            <p>আমার শপ শুধু একটি বাণিজ্যিক প্রতিষ্ঠান নয়, এটি একটি আস্থার নাম। আপনার অনলাইন কেনাকাটার অভিজ্ঞতা আরও আনন্দময় করতে আমরা সর্বদা সচেষ্ট।</p>
+            <p>ধন্যবাদান্তে,<br>আমার শপ টিম</p>
+        </section>
+        <!-- About Us Page Section End -->
+
+        <!-- Return Policy Page Section Start -->
+        <section id="return-policy-page" class="page-section content-page">
+            <h2>রিটার্ন পলিসি</h2>
+            <p>আমরা সবসময় চেষ্টা করি আমাদের ক্রেতাদের সেরা পণ্য এবং পরিষেবা প্রদান করতে। তবে, কোনো কারণে যদি আপনি আপনার কেনা পণ্যে সন্তুষ্ট না হন, তবে আমাদের রিটার্ন পলিসি অনুযায়ী পণ্য ফেরত দিতে পারবেন।</p>
+            <h3>শর্তাবলী:</h3>
+            <ul>
+                <li>পণ্য হাতে পাওয়ার ৭ দিনের মধ্যে রিটার্নের জন্য আবেদন করতে হবে।</li>
+                <li>পণ্যটি অবশ্যই অব্যবহৃত, অক্ষত এবং মূল প্যাকেজিং সহ ফেরত দিতে হবে।</li>
+                <li>পোশাকের ক্ষেত্রে, সকল ট্যাগ অক্ষত থাকতে হবে।</li>
+                <li>ভুল পণ্য বা ত্রুটিপূর্ণ পণ্য পেলে আমরা সম্পূর্ণ ফেরত বা পরিবর্তন করে দেবো। এক্ষেত্রে কোনো ডেলিভারি চার্জ প্রযোজ্য হবে না।</li>
+                <li>যদি ক্রেতা নিজের পছন্দে পণ্য পরিবর্তন করতে চান, তবে উভয় দিকের ডেলিভারি চার্জ ক্রেতাকে বহন করতে হবে।</li>
+                <li>কিছু বিশেষ পণ্য (যেমন: অন্তর্বাস, কাস্টমাইজড আইটেম) রিটার্নযোগ্য নাও হতে পারে। পণ্যের বিবরণে তা উল্লেখ থাকবে।</li>
+            </ul>
+            <h3>রিটার্ন প্রক্রিয়া:</h3>
+            <ol>
+                <li>আমাদের কাস্টমার কেয়ারে ফোন করে (017********) অথবা ইমেইলে (contact@amarshop.com) আপনার অর্ডার নম্বর এবং রিটার্নের কারণ জানান।</li>
+                <li>আমাদের প্রতিনিধি আপনার আবেদন পর্যালোচনা করে পরবর্তী পদক্ষেপ সম্পর্কে জানাবেন।</li>
+                <li>অনুমোদিত হলে, পণ্যটি আমাদের ঠিকানায় কুরিয়ার করে পাঠাতে হবে অথবা আমাদের ডেলিভারি পার্টনার তা সংগ্রহ করবে (শর্ত প্রযোজ্য)।</li>
+                <li>পণ্যটি হাতে পাওয়ার পর আমরা তা পরীক্ষা করে দেখবো এবং ৭ কর্মদিবসের মধ্যে আপনার রিফান্ড বা এক্সচেঞ্জ প্রক্রিয়া সম্পন্ন করবো।</li>
+            </ol>
+            <p>যেকোনো প্রয়োজনে আমাদের সাথে যোগাযোগ করতে দ্বিধা করবেন না।</p>
+        </section>
+        <!-- Return Policy Page Section End -->
+
+        <!-- Contact Page Section Start -->
+        <section id="contact-page" class="page-section content-page">
+            <h2>যোগাযোগ</h2>
+            <p>আপনার যেকোনো প্রশ্ন, মতামত বা জিজ্ঞাসার জন্য আমাদের সাথে যোগাযোগ করতে পারেন। আমরা আপনার সেবায় সর্বদা প্রস্তুত।</p>
+            <p><strong>ফোন:</strong> <a href="tel:01700000000">017********</a> (সকাল ১০টা - রাত ৮টা)</p>
+            <p><strong>ইমেইল:</strong> <a href="mailto:support@amarshop.com">support@amarshop.com</a></p>
+            <p><strong>ঠিকানা (শুধুমাত্র অফিসিয়াল):</strong><br>
+            [আপনার ঠিকানা এখানে লিখুন]<br>
+            ঢাকা, বাংলাদেশ।</p>
+            <form id="contact-form" style="margin-top: 20px;">
+                <div class="form-group">
+                    <label for="contact-name">আপনার নাম:</label>
+                    <input type="text" id="contact-name" name="contact-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">আপনার ইমেইল:</label>
+                    <input type="email" id="contact-email" name="contact-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-subject">বিষয়:</label>
+                    <input type="text" id="contact-subject" name="contact-subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">আপনার বার্তা:</label>
+                    <textarea id="contact-message" name="contact-message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-accent">বার্তা পাঠান</button>
+            </form>
+        </section>
+        <!-- Contact Page Section End -->
+    </main>
+    <!-- Main Content Area End -->
+
+    <!-- Footer Section Start -->
+    <footer>
+        <p>© copyright all rights reserved।</p>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Toast Notification Area -->
+    <div id="toast-notification" class="toast">
+        <span id="toast-message"></span>
+    </div>
+
+    <!-- Main JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
